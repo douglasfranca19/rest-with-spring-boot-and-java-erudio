@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreentingController {
 
-	private static final String template = "Hello, %s!";
+	private static final String template = "Helloo, %s!";
 	private final AtomicLong counter = new AtomicLong();
 
 	@RequestMapping("/greeting")

@@ -46,15 +46,6 @@ public class PersonController {
 		return service.create(person);
 	}
 
-	@PostMapping(value = "/v2", consumes = { MediaType.APPLICATION_JSON_VALUE,
-			MediaType.APPLICATION_XML_VALUE,
-			"application/x-yaml" }, produces = { MediaType.APPLICATION_JSON_VALUE,
-					MediaType.APPLICATION_XML_VALUE,
-					"application/x-yaml" })
-	public PersonVOV2 createV2(@RequestBody PersonVOV2 person) {
-		return service.createV2(person);
-	}
-
 	@PutMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE,
 			"application/x-yaml" }, produces = {
 			MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE,

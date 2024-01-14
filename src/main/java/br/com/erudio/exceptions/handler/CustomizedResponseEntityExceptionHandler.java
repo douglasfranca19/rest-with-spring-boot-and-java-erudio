@@ -11,6 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import br.com.erudio.exceptions.ExceptionsResponse;
+import br.com.erudio.exceptions.RequiredObjectIsNullException;
 import br.com.erudio.exceptions.ResourceNotFoundExceptions;
 
 @ControllerAdvice
@@ -31,5 +32,13 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 		ExceptionsResponse exceptionsResponse = new ExceptionsResponse(new Date(), ex.getMessage(),
 				request.getDescription(false));
 		return new ResponseEntity<>(exceptionsResponse, HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(RequiredObjectIsNullException.class)
+	public final ResponseEntity<ExceptionsResponse> handlerBadRequestExceptions(Exception ex, WebRequest request) {
+
+		ExceptionsResponse exceptionsResponse = new ExceptionsResponse(new Date(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(exceptionsResponse, HttpStatus.BAD_REQUEST);
 	}
 }
